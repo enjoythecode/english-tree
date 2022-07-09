@@ -23,11 +23,14 @@ def add_word_to_root(root, word):
 
 def main():
     INPUT_FILE = "words_alpha.txt"
+
     with open(INPUT_FILE, "r") as words:
         root = {}
-        for word in words.readlines():
-            print(word.strip("\n"))
-            root = add_word_to_root()
+        for line in words.readlines():
+            word = line.strip("\n")
+            add_word_to_root(root, word)
+
+    print(root)
 
 class Tests(unittest.TestCase):
 
@@ -104,5 +107,5 @@ class Tests(unittest.TestCase):
         self.assertEqual(existing, expected)
 
 if __name__ == "__main__":
-    unittest.main()
     main()
+    unittest.main()
